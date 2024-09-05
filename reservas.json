@@ -1,0 +1,34 @@
+[
+    {
+    "nombre": "Juan Perez",
+    "nombreHotel": "O'Higgins",
+    "tipoHabitacion": "Doble",
+    "huespedes": 2,
+    "checkin": "02-11-2024",
+    "checkout": "09-11-2024"
+},
+{
+    "nombre": "Pilar Alvarado",
+    "nombreHotel": "Sheraton",
+    "tipoHabitacion": "Matrimonial",
+    "huespedes": 2,
+    "checkin": "05-12-2024",
+    "checkout": "07-12-2024"
+},
+{
+    "nombre": "Mariana Yañez",
+    "nombreHotel": "O'Higgins",
+    "tipoHabitacion": "Triple",
+    "huespedes": 3,
+    "checkin": "18-09-2024",
+    "checkout": "24-09-2024"
+},
+{
+    "nombre": "Jacinto Miranda",
+    "nombreHotel": "La Joya del Pacífico",
+    "tipoHabitacion": "Simple",
+    "huespedes": 1,
+    "checkin": "10-11-2024",
+    "checkout": "14-11-2024"
+}
+]
