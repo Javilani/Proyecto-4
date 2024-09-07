@@ -8,6 +8,6 @@ router.get('/', controladorOrdenes.leerTodas);
 router.put('/:id', controladorOrdenes.actualizar);
 router.delete('/:id', controladorOrdenes.eliminar);
 router.get('/:id', controladorOrdenes.leerUna);
-router.get('/search', controladorOrdenes.filtrar);
+router.get('/', controladorOrdenes.filtrar);
 
 export default router

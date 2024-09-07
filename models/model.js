@@ -1,4 +1,5 @@
 // La clase con un constructor 
+import ordenes from '../controllers/controladorOrdenes.js';
 
 class Reserva {
     constructor(nombre, nombreHotel, tipoHabitacion, huespedes, checkin, checkout) {
@@ -8,6 +9,7 @@ class Reserva {
         this.huespedes = huespedes;
         this.checkin = checkin;
         this.checkout = checkout;
+        this.id = ordenes.length + 1;
     }
 
     mostrarResumen() {

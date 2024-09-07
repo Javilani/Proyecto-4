@@ -2,8 +2,21 @@ import Reserva from '../models/model.js';
 var ordenes = [];
 
 const crear = async (req, res) => {
-    const nuevaReserva = new Reserva(req.body);
-    nuevaReserva.id = ordenes.length + 1;
+    const {nombre, nombreHotel, tipoHabitacion, huespedes, checkin, checkout} = req.body;
+
+    if (!nombre || !nombreHotel || !tipoHabitacion || !huespedes || !checkin || !checkout) {
+        return res.status(404).json({ mensaje: 'Faltan datos en la reserva.' })
+    }
+
+    const nuevaReserva = {
+        id: ordenes.length + 1,
+        nombre,
+        nombreHotel,
+        tipoHabitacion,
+        huespedes,
+        checkin,
+        checkout, 
+    };
     ordenes.push(nuevaReserva);
 
     res.status(201).json({
@@ -33,7 +46,7 @@ const actualizar = async (req, res) => {
         return res.status(404).json({ mensaje: 'Reserva no encontrada.' })
     };
 
-    ordenes[orderIndex] = { ...orders[orderIndex], ...req.body }
+    ordenes[orderIndex] = { ...ordenes[orderIndex], ...req.body }
     res.json({
         mensaje: 'Reserva actualizada con éxito.',
         info: ordenes[orderIndex],
@@ -68,38 +81,23 @@ const leerUna = async (req, res) => {
 
 const filtrar = async (req, res) => {
     const { nombre, nombreHotel, tipoHabitacion, huespedes, checkin, checkout } = req.query
+    let result = ordenes;
 
-    const filteredOrders = ordenes.filter((orden) => {
-        if (nombre && orden.nombre !== nombre) {
-            return false
-        }
-        if (nombreHotel && orden.nombreHotel !== nombreHotel) {
-            return false
-        }
-        if (tipoHabitacion && orden.tipoHabitacion !== tipoHabitacion) {
-            return false
-        }
-        if (huespedes && orden.huespedes !== huespedes) {
-            return false
-        }
-        if (checkin && orden.checkin !== checkin) {
-            return false
-        }
-        if (checkout && orden.checkout !== checkout) {
-            return false
-        }
-        return true
-    })
+    if (nombre) result = result.filter(r => r.nombre === nombre);
+    if (nombreHotel) result = result.filter(r => r.nombreHotel === nombreHotel);
+    if (tipoHabitacion) result = result.filter(r => r.tipoHabitacion === tipoHabitacion);
+    if (huespedes) result = result.filter(r => r.huespedes === parseInt(huespedes));
+    if (checkin) result = result.filter(r => r.checkin === checkin);
+    if (checkout) result = result.filter(r => r.checkout === checkout);
 
-    if (filteredOrders.length === 0) {
+    if (result.length === 0) {
         return res.status(404).json({ mensaje: 'Reserva no encontrada.' })
     }
 
     res.json({
         mensaje: 'Reservas filtradas con éxito.',
-        data: filteredOrders,
+        data: result,
     })
 };
-
 
 export default {crear, leerTodas, actualizar, eliminar, leerUna, filtrar}
