@@ -2,7 +2,7 @@ import Reserva from '../models/model.js';
 var ordenes = [];
 
 const crear = async (req, res) => {
-    const {nombre, nombreHotel, tipoHabitacion, huespedes, checkin, checkout} = req.body;
+    const { nombre, nombreHotel, tipoHabitacion, huespedes, checkin, checkout } = req.body;
 
     if (!nombre || !nombreHotel || !tipoHabitacion || !huespedes || !checkin || !checkout) {
         return res.status(404).json({ mensaje: 'Faltan datos en la reserva.' })
@@ -15,7 +15,7 @@ const crear = async (req, res) => {
         tipoHabitacion,
         huespedes,
         checkin,
-        checkout, 
+        checkout,
     };
     ordenes.push(nuevaReserva);
 
@@ -25,7 +25,7 @@ const crear = async (req, res) => {
     })
 };
 
-const leerTodas = async (req,res) => {
+const leerTodas = async (req, res) => {
     if (ordenes.length > 0) {
         res.json({
             mensaje: "Datos obtenidos con éxito",
@@ -80,24 +80,32 @@ const leerUna = async (req, res) => {
 };
 
 const filtrar = async (req, res) => {
-    const { nombre, nombreHotel, tipoHabitacion, huespedes, checkin, checkout } = req.query
-    let result = ordenes;
-
-    if (nombre) result = result.filter(r => r.nombre === nombre);
-    if (nombreHotel) result = result.filter(r => r.nombreHotel === nombreHotel);
-    if (tipoHabitacion) result = result.filter(r => r.tipoHabitacion === tipoHabitacion);
-    if (huespedes) result = result.filter(r => r.huespedes === parseInt(huespedes));
-    if (checkin) result = result.filter(r => r.checkin === checkin);
-    if (checkout) result = result.filter(r => r.checkout === checkout);
-
-    if (result.length === 0) {
-        return res.status(404).json({ mensaje: 'Reserva no encontrada.' })
-    }
-
-    res.json({
-        mensaje: 'Reservas filtradas con éxito.',
-        data: result,
-    })
+    const { nombre, nombreHotel, tipoHabitacion, huespedes, checkin, checkout } = req.query;
+    let result = ordenes.filter(r => { return (!nombre || r.nombre === nombre) && (!nombreHotel || r.nombreHotel === nombreHotel) && (!tipoHabitacion || r.tipoHabitacion === tipoHabitacion) && (!huespedes || r.huespedes === parseInt(huespedes)) && (!checkin || r.checkin === checkin) && (!checkout || r.checkout === checkout); }); 
+    if (result.length === 0) { 
+        return res.status(404).json({ mensaje: 'Reserva no encontrada.' }); 
+    } 
+    res.json({ mensaje: 'Reservas filtradas con éxito.', data: result, });
 };
+// const filtrar = async (req, res) => {
+//     const { nombre, nombreHotel, tipoHabitacion, huespedes, checkin, checkout } = req.query
+//     let result = ordenes;
 
-export default {crear, leerTodas, actualizar, eliminar, leerUna, filtrar}
+//     if (nombre) result = result.filter(r => r.nombre === nombre);
+//     if (nombreHotel) result = result.filter(r => r.nombreHotel === nombreHotel);
+//     if (tipoHabitacion) result = result.filter(r => r.tipoHabitacion === tipoHabitacion);
+//     if (huespedes) result = result.filter(r => r.huespedes === parseInt(huespedes));
+//     if (checkin) result = result.filter(r => r.checkin === checkin);
+//     if (checkout) result = result.filter(r => r.checkout === checkout);
+
+//     if (result.length === 0) {
+//         return res.status(404).json({ mensaje: 'Reserva no encontrada.' })
+//     }
+
+//     res.json({
+//         mensaje: 'Reservas filtradas con éxito.',
+//         data: result,
+//     })
+// };
+
+export default { crear, leerTodas, actualizar, eliminar, leerUna, filtrar }
