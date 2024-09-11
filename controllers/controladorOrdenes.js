@@ -17,7 +17,6 @@ const crear = async (req, res) => {
         checkout,
     };
     ordenes.push(nuevaReserva);
-    console.log(nuevaReserva);
 
     res.status(201).json({
         mensaje: "Reserva creada exitosamente",
