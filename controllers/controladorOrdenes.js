@@ -99,5 +99,4 @@ const filtrarOrdenes = async (req, res) => {
     })
 };
 
-//export default { crear, leerTodas, actualizar, eliminar, leerUna, filtrarOrdenes }
 module.exports = { crear, leerTodas, actualizar, eliminar, leerUna, filtrarOrdenes }
