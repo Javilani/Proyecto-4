@@ -35,7 +35,17 @@ const router = express.Router();
  *         description: Faltan datos en la reserva.
  */
 router.get('/:id', (req, res) => {
-    const user = { id: req.params.id, nombre: 'Juan Hidalgo', hotel: 'Jaguar' };
-    res.json(user);
+    const user = { 
+      id: req.params.id, 
+      nombre: 'Juan Hidalgo', 
+      hotel: 'Jaguar',
+      tipoHabitacion: "Doble",
+      huespedes: 3,
+      checkin: "18-10-2024",
+      checkout: "23-10-2024" };
+    res.json({
+      mensaje: 'Reserva obtenida con éxito.',
+      data: user,
+  });
   });
   module.exports = router;

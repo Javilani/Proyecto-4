@@ -35,7 +35,6 @@ const router = express.Router();
  *         description: Reserva no encontrada
  */
 router.delete('/:id', (req, res) => {
-    const deletedUser = { id: req.params.id, nombre: 'Beatriz Guajardo', hotel: 'La Joya del Paraíso' };
-    res.status(200).json(deletedUser);
+    res.status(200).json({ mensaje: 'Reserva eliminada con éxito.' });
   });
   module.exports = router;

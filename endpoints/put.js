@@ -27,6 +27,18 @@ const router = express.Router();
  *               hotel:
  *                 type: string
  *                 example: Jaguar
+ *               tipoHabitacion: 
+ *                 type: string
+ *                 example: Matrimonial
+ *               huespedes:
+ *                 type: integer
+ *                 example: 2
+ *               checkin:
+ *                 type: date
+ *                 example: 05-12-2024
+ *               checkout:
+ *                 type: date
+ *                 example: 07-12-2024
  *     responses:
  *       200:
  *         description: Datos de la reserva actualizada
@@ -52,7 +64,14 @@ router.put('/:id', (req, res) => {
     const updatedUser = { 
         id: req.params.id, 
         nombre: nombre, 
-        hotel: hotel};
-    res.json(updatedUser);
+        hotel: hotel,
+        tipoHabitacion: req.body.tipoHabitacion,
+        huespedes: req.body.huespedes,
+        checkin: req.body.checkin,
+        checkout: req.body.checkout };
+    res.json({
+        mensaje: 'Reserva actualizada con éxito.',
+        info: updatedUser,
+    });
   });
   module.exports = router;

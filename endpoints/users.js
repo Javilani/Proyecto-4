@@ -56,6 +56,9 @@ router.get('/', (req, res) => {
       checkin: "18-10-2024",
       checkout: "23-10-2024"},
   ];
-  res.json(users);
+  res.json({
+    mensaje: "Datos obtenidos con éxito",
+    info: users,
+});
 });
 module.exports = router;
