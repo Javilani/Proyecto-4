@@ -1,28 +1,28 @@
-const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
-
-const swaggerDefinition = {
-    openapi: '3.0.0',
-    info: {
-        title: 'Proyecto 4 Documentado',
-        version: '1.0.0',
-        description: 'Documentación de la API con Swagger',
-    },
-    servers: [
-        {
-            url: 'http://localhost:${port}',
-            description: 'Servidor local',
+const swaggerJsDoc = require('swagger-jsdoc');
+ 
+const swaggerOptions = {
+    swaggerDefinition: {
+        openapi: '3.0.0',
+        info: {
+            title: 'Proyecto 4 Documentado',
+            version: '1.0.0',
+            description: 'API Information',
+            contact: {
+                name: 'Developer',
+            },
+            servers: [
+                {
+                    url: 'http://localhost:${port}',
+                },
+            ],
         },
-    ],
-};
-
-const options = {
-    swaggerDefinition,
+    },
     apis: ['./endpoints/*.js'],
 };
 
-const swaggerSpect = swaggerJSDoc(options);
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
 module.exports = (app) => {
-    app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpect));
-}
+    app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+};

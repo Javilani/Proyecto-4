@@ -5,11 +5,11 @@ const router = express.Router();
  * @swagger
  * /users:
  *   get:
- *     summary: Obtiene la lista de todos los usuarios
- *     description: Retorna un array de usuarios registrados.
+ *     summary: Obtiene la lista de todas las reservas
+ *     description: Retorna un array de reservas registradas.
  *     responses:
  *       200:
- *         description: Lista de usuarios
+ *         description: Lista de reservas
  *         content:
  *           application/json:
  *             schema:
@@ -22,18 +22,18 @@ const router = express.Router();
  *                     example: 1
  *                   nombre:
  *                     type: string
- *                     example: Juan
- *                   apellido:
+ *                     example: Jose Lopez
+ *                   hotel:
  *                     type: string
- *                     example: Pérez
+ *                     example: Sheraton
  */
 router.get('/', (req, res) => {
   const users = [
-    { id: 1, nombre: 'Dave', apellido: 'Grohl' },
-    { id: 2, nombre: 'Ana', apellido: 'García' },
-    { id: 3, nombre: 'Kurt', apellido: 'Cobain' },
-    { id: 4, nombre: 'Brian', apellido: 'Johnson' },
-    { id: 5, nombre: 'Sheryl', apellido: 'Crow' },
+    { id: 1, nombre: 'David Figueroa', hotel: "O'Higgins" },
+    { id: 2, nombre: 'Ana Silva', hotel: 'Sheraton' },
+    { id: 3, nombre: 'Cris Hidalgo', hotel: 'Holiday Inn' },
+    { id: 4, nombre: 'Brian Herrera', hotel: 'Jaguar' },
+    { id: 5, nombre: 'Beatriz Guajardo', hotel: 'La Joya del Paraíso' },
   ];
   res.json(users);
 });
