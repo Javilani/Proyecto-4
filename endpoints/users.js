@@ -26,14 +26,35 @@ const router = express.Router();
  *                   hotel:
  *                     type: string
  *                     example: Sheraton
+ *                   tipoHabitacion: 
+ *                     type: string
+ *                     example: Matrimonial
+ *                   huespedes:
+ *                     type: integer
+ *                     example: 2
+ *                   checkin:
+ *                     type: date
+ *                     example: 05-12-2024
+ *                   checkout:
+ *                     type: date
+ *                     example: 07-12-2024
  */
 router.get('/', (req, res) => {
   const users = [
-    { id: 1, nombre: 'David Figueroa', hotel: "O'Higgins" },
-    { id: 2, nombre: 'Ana Silva', hotel: 'Sheraton' },
-    { id: 3, nombre: 'Cris Hidalgo', hotel: 'Holiday Inn' },
-    { id: 4, nombre: 'Brian Herrera', hotel: 'Jaguar' },
-    { id: 5, nombre: 'Beatriz Guajardo', hotel: 'La Joya del Paraíso' },
+    { id: 1, 
+      nombre: 'David Figueroa', 
+      hotel: "O'Higgins", 
+      tipoHabitacion: "Matrimonial",
+      huespedes: 2,
+      checkin: "05-12-2024",
+      checkout: "07-12-2024"},
+    { id: 2, 
+      nombre: 'Ana Silva', 
+      hotel: 'Sheraton',
+      tipoHabitacion: "Doble",
+      huespedes: 3,
+      checkin: "18-10-2024",
+      checkout: "23-10-2024"},
   ];
   res.json(users);
 });
