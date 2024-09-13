@@ -28,9 +28,21 @@ const router = express.Router();
  *                 nombre:
  *                   type: string
  *                   example: Beatriz Guajardo
- *                 apellido:
+ *                 hotel:
  *                   type: string
  *                   example: La Joya del Paraíso
+ *                 tipoHabitacion: 
+ *                   type: string
+ *                   example: Single
+ *                 huespedes:
+ *                   type: integer
+ *                   example: 1
+ *                 checkin:
+ *                   type: date
+ *                   example: 23-12-2024
+ *                 checkout:
+ *                   type: date
+ *                   example: 26-12-2024
  *       404:
  *         description: Reserva no encontrada
  */

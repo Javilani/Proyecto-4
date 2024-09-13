@@ -31,6 +31,18 @@ const router = express.Router();
  *                 hotel:
  *                   type: string
  *                   example: Jaguar
+ *                 tipoHabitacion: 
+ *                   type: string
+ *                   example: Matrimonial
+ *                 huespedes:
+ *                   type: integer
+ *                   example: 2
+ *                 checkin:
+ *                   type: date
+ *                   example: 05-12-2024
+ *                 checkout:
+ *                   type: date
+ *                   example: 07-12-2024
  *       404:
  *         description: Faltan datos en la reserva.
  */
